@@ -24,6 +24,13 @@ namespace MedLab.Data.Sql.Repositories
             return medTest.Id;
         }
 
+        public Task UpdateAsync(MedTest medTest)
+        {
+            _dbContext.Entry(medTest).State = EntityState.Modified;
+
+            return _dbContext.SaveChangesAsync();
+        }
+
         public Task<MedTest> GetAsync(int medTestId)
         {
             return _dbContext.MedTests.FindAsync(medTestId);
@@ -32,6 +39,20 @@ namespace MedLab.Data.Sql.Repositories
         public async Task<IList<MedTest>> GetAllAsync()
         {
             return await _dbContext.MedTests.ToListAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var medTest = await GetAsync(id);
+
+            if (medTest == null)
+            {
+                throw new KeyNotFoundException($"No medical test was found for the given id {id}");
+            }
+
+            _dbContext.MedTests.Remove(medTest);
+
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

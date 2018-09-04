@@ -14,27 +14,33 @@
         <li class="breadcrumb-item active">Medical Tests</li>
     </ol>
     <!-- Page Content -->
-    <h2>Medical Tests</h2>
+    <h2 class="float-left">Medical Tests</h2>
+    <a href="#" title="Add a medical test" class="float-right" id="add-medtest-btn"><i class="text-dark fas fa-fw fa-plus-circle fa-2x"></i></a>
+    <div class="clearfix"></div>
     <hr>
     <div class="row">
         @foreach (var test in Model)
         {
-        <div class="col-md-6 col-lg-4">
-            <div class="card hideable-container">
-                <div class="card-body">
-                    <h5 class="card-title float-left">@test.Name</h5>
-                    <h5 class="float-right">@test.Amount.ToString("C")</h5>
-                    <div class="clearfix"></div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title float-left">@test.Name</h5>
+                        <h5 class="float-right">@test.Amount.ToString("C")</h5>
+                        <div class="clearfix"></div>
 
-                    <p class="card-text text-nowrap text-truncate">@test.Description</p>
-                </div>
-                <div class="card-footer bg-transparent border-light hideable">
-                    <a href="#" title="Add test for a user"><i class="text-dark fas fa-fw fa-shopping-cart"></i></a>
-                    <a href="#" title="Delete"><i class="text-danger fas fa-fw fa-trash-alt fa-pull-right"></i></a>
-                    <a href="#" title="Edit"><i class="text-dark fas fa-fw fa-pencil-alt fa-pull-right"></i></a>
+                        <p class="card-text text-nowrap text-truncate">@test.Description</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-light">
+                        <a href="#" title="Add test for a user"><i class="text-dark fas fa-fw fa-shopping-cart"></i></a>
+                        <a href="#" title="Delete" class="delete-medtest-btn" data-id="@test.Id"><i class="text-danger fas fa-fw fa-trash-alt fa-pull-right"></i></a>
+                        <a href="#" title="Edit" class="edit-medtest-btn" data-id="@test.Id"><i class="text-dark fas fa-fw fa-pencil-alt fa-pull-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
         }
     </div>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/medtests") 
+}

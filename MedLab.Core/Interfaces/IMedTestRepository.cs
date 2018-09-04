@@ -9,5 +9,7 @@ namespace MedLab.Core.Interfaces
         Task<int> AddAsync(MedTest medTest);
         Task<IList<MedTest>> GetAllAsync();
         Task<MedTest> GetAsync(int medTestId);
+        Task UpdateAsync(MedTest medTest);
+        Task DeleteAsync(int id);
     }
 }

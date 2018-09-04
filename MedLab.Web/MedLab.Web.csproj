@@ -214,6 +214,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\app-medtests.js" />
     <Content Include="Scripts\app\demo\chart-area-demo.js" />
     <Content Include="Scripts\app\demo\chart-bar-demo.js" />
     <Content Include="Scripts\app\demo\chart-pie-demo.js" />
@@ -1692,6 +1693,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\MedTests\Index.cshtml" />
+    <Content Include="Views\MedTests\SaveTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MedLab.Business\MedLab.Business.csproj">

@@ -1,51 +1,40 @@
 ﻿@model IList<MedLab.Core.Models.MedTest>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Medical Tests";
+    ViewBag.TestsActive = "active";
 }
 
-<h2>Index</h2>
+<div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("Index", "Home")">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Medical Tests</li>
+    </ol>
+    <!-- Page Content -->
+    <h2>Medical Tests</h2>
+    <hr>
+    <div class="row">
+        @foreach (var test in Model)
+        {
+        <div class="col-md-6 col-lg-4">
+            <div class="card hideable-container">
+                <div class="card-body">
+                    <h5 class="card-title float-left">@test.Name</h5>
+                    <h5 class="float-right">@test.Amount.ToString("C")</h5>
+                    <div class="clearfix"></div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Test Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-           Amount
-        </th>
-        <th>
-            Created
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                    <p class="card-text text-nowrap text-truncate">@test.Description</p>
+                </div>
+                <div class="card-footer bg-transparent border-light hideable">
+                    <a href="#" title="Add test for a user"><i class="text-dark fas fa-fw fa-shopping-cart"></i></a>
+                    <a href="#" title="Delete"><i class="text-danger fas fa-fw fa-trash-alt fa-pull-right"></i></a>
+                    <a href="#" title="Edit"><i class="text-dark fas fa-fw fa-pencil-alt fa-pull-right"></i></a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

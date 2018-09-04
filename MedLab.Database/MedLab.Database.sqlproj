@@ -69,7 +69,7 @@
     <Build Include="dbo\Tables\AspNetUserClaims.sql" />
     <Build Include="dbo\Tables\AspNetUserLogins.sql" />
     <Build Include="dbo\Tables\__MigrationHistory.sql" />
-    <Build Include="dbo\Tables\Tests.sql" />
+    <Build Include="dbo\Tables\MedTests.sql" />
     <Build Include="dbo\Tables\Clinics.sql" />
     <Build Include="dbo\Tables\Patients.sql" />
     <Build Include="dbo\Tables\Transactions.sql" />
